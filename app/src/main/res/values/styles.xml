@@ -1,0 +1,35 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="background">@color/darkGrey</item>
+        <item name="popupMenuStyle">@style/popupMenu</item>
+    </style>
+
+
+    <style name="NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    
+    <style name="SplashScreenTheme" parent="NoActionBar">
+        
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+        
+    </style>
+
+
+    <style name="popupMenu" parent="Widget.AppCompat.PopupMenu">
+
+        <item name="android:dropDownHorizontalOffset"> -2dp</item>
+        <item name="background">@color/darkGrey</item>
+
+    </style>
+
+    <color name="darkGrey">#73C5C5C5</color>
+</resources>

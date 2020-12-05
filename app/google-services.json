@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "855640955456",
+    "firebase_url": "https://fyp-feeclearanceapp.firebaseio.com",
+    "project_id": "fyp-feeclearanceapp",
+    "storage_bucket": "fyp-feeclearanceapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855640955456:android:ce456a0be817ca2fbe1da5",
+        "android_client_info": {
+          "package_name": "com.fypcuiatk.feeclearanceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855640955456-dssb4tl3siodt9la8td27pt37ag817e4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUH-EJAzTUKlh03etCKawVVZdhj0AsNZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855640955456-dssb4tl3siodt9la8td27pt37ag817e4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

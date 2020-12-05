@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginTop="4dp"
+    android:clipToPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageContainerCardView"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".5">
+
+            <ImageView
+                android:id="@+id/receiptImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="matrix" />
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/viewDetailsBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="details"
+            app:layout_constraintLeft_toLeftOf="@id/imageContainerCardView"
+            app:layout_constraintRight_toRightOf="@id/imageContainerCardView"
+            app:layout_constraintTop_toBottomOf="@id/imageContainerCardView"
+
+            />
+
+        <ImageButton
+            android:id="@+id/moreBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:elevation="3dp"
+            android:src="@drawable/ic_baseline_more_horiz_24"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imageContainerCardView" />
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            android:translationZ="2dp"
+            app:layout_constraintBottom_toTopOf="@id/ll2"
+            app:layout_constraintLeft_toRightOf="@id/imageContainerCardView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+
+            >
+
+            <TextView
+                android:id="@+id/addOnTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Added on"
+                android:textColor="@color/textPrimary" />
+
+            <TextView
+                android:id="@+id/dateTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="10/3/2020"
+                android:textColor="@color/textSecondary"
+
+                tools:layout_editor_absoluteY="10dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:translationZ="2dp"
+            app:layout_constraintBottom_toTopOf="@id/ll3"
+            app:layout_constraintLeft_toLeftOf="@id/ll1"
+            app:layout_constraintTop_toBottomOf="@id/ll1">
+
+            <TextView
+                android:id="@+id/transNumTextTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Transaction #"
+                android:textColor="@color/textPrimary" />
+
+            <TextView
+                android:id="@+id/transactionNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="123-456789-0"
+                android:textColor="@color/textSecondary"
+
+                tools:layout_editor_absoluteY="10dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:translationZ="2dp"
+            app:layout_constraintBottom_toBottomOf="@id/imageContainerCardView"
+            app:layout_constraintLeft_toLeftOf="@id/ll1"
+            app:layout_constraintTop_toBottomOf="@id/ll2">
+
+            <TextView
+                android:id="@+id/amountTextTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Amount paid"
+                android:textColor="@color/textPrimary" />
+
+            <TextView
+                android:id="@+id/amountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="25,000"
+                android:textColor="@color/textSecondary"
+                tools:layout_editor_absoluteY="10dp" />
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

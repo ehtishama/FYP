@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.fypcuiatk.feeclearanceapp.Dialogs.ProgressDialog
 import com.fypcuiatk.feeclearanceapp.Models.DatabaseModels.Receipt
 import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.android.material.button.MaterialButton
@@ -19,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.TextRecognition
 import kotlinx.android.synthetic.main.activity_add_receipt.*
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -39,7 +42,7 @@ class AddReceiptActivity : AppCompatActivity() {
     private lateinit var storageReference: StorageReference
     private var user: FirebaseUser? = null
 
-    //
+    // receipt image
     private lateinit var receiptBitmap: Bitmap
 
 
@@ -59,7 +62,6 @@ class AddReceiptActivity : AppCompatActivity() {
         receiptImageView.setImageBitmap(receiptBitmap)
 
         // firebase init
-
         user = FirebaseAuth.getInstance().currentUser
         storageReference = FirebaseStorage.getInstance().reference.child(user?.uid ?: "unknown")
         databaseReference = FirebaseDatabase.getInstance().reference.child(user?.uid ?: "unknown")
@@ -109,6 +111,38 @@ class AddReceiptActivity : AppCompatActivity() {
             // TODO :: Display upload success message
 
         }
+
+        // OCR progress dialog
+        val dialog = ProgressDialog()
+        dialog.isCancelable = false
+        dialog.show(supportFragmentManager, "Loading")
+
+        // start OCR
+        val inputImage: InputImage = InputImage.fromBitmap(receiptBitmap, 0)
+        val recognizer = TextRecognition.getClient()
+
+        recognizer.process(inputImage)
+            .addOnSuccessListener { result ->
+                val text = result.text
+                Log.d(TAG, "onCreate: OCR finished")
+                Log.d(TAG, "onCreate: Text found: ")
+                Log.d(TAG, "onCreate: $text")
+
+                val transactionNumPattern = Regex("TT[0-9]+\\b")
+                val amountPaidPattern = Regex("PKR.?[0-9]+\\.[0-9]{2}")
+
+                val transactionNumExtractedValue = transactionNumPattern.find(text)?.value
+                val amountPaidExtractedValue = amountPaidPattern.find(text)?.value
+
+                transactionNumET.setText(transactionNumExtractedValue ?: "Not detected")
+                amountET.setText(amountPaidExtractedValue ?: "Not detected")
+
+
+            }
+            .addOnFailureListener { e -> Log.e(TAG, "onActivityResult: error", e) }
+            .addOnCompleteListener {
+                dialog.dismiss()
+            }
 
 
     }
